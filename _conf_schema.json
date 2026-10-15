@@ -1,0 +1,73 @@
+{
+  "enabled": {
+    "type": "bool",
+    "description": "启用低额提醒",
+    "hint": "关闭后只保留 LLM 工具与 /余额 命令，不再主动推送提醒。",
+    "obvious_hint": true,
+    "default": true
+  },
+  "threshold": {
+    "type": "float",
+    "description": "余额警戒线（元）",
+    "hint": "任一 DeepSeek 账号的 CNY 总余额低于此值时触发提醒。",
+    "obvious_hint": true,
+    "default": 10.0
+  },
+  "target_sessions": {
+    "type": "list",
+    "description": "提醒推送白名单",
+    "hint": "可填完整会话 ID（形如 平台ID:GroupMessage:群号 或 平台ID:FriendMessage:QQ号），也可只填群号（自动按群聊解析）。留空则只发给管理员私聊。",
+    "obvious_hint": true,
+    "default": []
+  },
+  "also_notify_admin": {
+    "type": "bool",
+    "description": "同时提醒管理员",
+    "hint": "开启后，除上述白名单外，还会额外把提醒私聊发给管理员（自动读取 admins_id，无需填写号码）。",
+    "obvious_hint": true,
+    "default": true
+  },
+  "check_interval_hours": {
+    "type": "float",
+    "description": "检查间隔（小时）",
+    "hint": "后台查询余额的频率。默认 6 小时。",
+    "default": 6.0
+  },
+  "remind_cooldown_hours": {
+    "type": "float",
+    "description": "提醒冷却（小时）",
+    "hint": "同一低额状态多久内只提醒一次，避免刷屏。默认 24 小时。",
+    "default": 24.0
+  },
+  "use_persona": {
+    "type": "bool",
+    "description": "用人格生成提醒文案",
+    "hint": "开启后由 LLM 按当前人格口吻生成提醒；关闭则用固定模板。",
+    "obvious_hint": true,
+    "default": true
+  },
+  "persona_name": {
+    "type": "string",
+    "description": "用于生成提醒的人格",
+    "hint": "留空则跟随 AstrBot 的默认人格设置。",
+    "_special": "select_persona",
+    "default": ""
+  },
+  "remind_instruction": {
+    "type": "text",
+    "description": "提醒生成指令",
+    "hint": "只描述「这是主动发起的一条消息」这件事即可，语气/长度/口癖由人格决定，无需在此重复约束。",
+    "default": "你正在主动发一条消息——不是回复谁，而是你自己突然想说起这件事。请用你平时的语气把它随口讲出来，可以带点情绪。"
+  },
+  "chat_provider_id": {
+    "type": "string",
+    "description": "生成提醒所用的模型（可选）",
+    "hint": "留空则使用 AstrBot 的 default_provider_id。",
+    "default": ""
+  },
+  "request_timeout": {
+    "type": "float",
+    "description": "接口超时（秒）",
+    "default": 20.0
+  }
+}

@@ -1,0 +1,14 @@
+name: astrbot_plugin_ds_balance
+display_name: DeepSeek 余额查询
+desc: 让机器人自主查询 DeepSeek 账户余额；余额低于设定阈值时，用当前人格生成提醒并主动推送到指定会话。
+short_desc: DeepSeek 余额查询与低额人格化提醒
+version: v1.0.0
+author: misha-233
+repo: https://github.com/misha-233/astrbot_plugin_ds_balance
+astrbot_version: ">=4.24.1"
+support_platforms:
+  - aiocqhttp
+tags:
+  - 余额查询
+  - DeepSeek
+  - 提醒
